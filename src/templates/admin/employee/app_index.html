@@ -1,0 +1,35 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block bodyclass %}{{ block.super }} app-{{ app_label }}{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+            &rsaquo;
+            {% for app in app_list %}
+                {{ app.name }}
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block extra_menu %}
+    <div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
+        <table width="100%">
+            <caption>
+                <a href="{{ app.app_url }}" class="section"
+                   title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">Others</a>
+            </caption>
+            <tr>
+                <th scope="row"><a href="{% url 'admin:employee_payscale_changelist' %}">Pay scales</a></th>
+            </tr>
+            <tr>
+                <th scope="row"><a href="{% url 'admin:employee_skill_changelist' %}">Employee Skill</a></th>
+            </tr>
+            <!-- Hidden from Main Index -->
+
+        </table>
+    </div>
+{% endblock %}

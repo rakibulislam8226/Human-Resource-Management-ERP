@@ -1,0 +1,14 @@
+.idea
+src/.env
+src/.env.backup
+src/static
+media
+*.pyc
+env
+venv
+virtualenv
+.code
+src/*/node_moduels
+src/*/package.lock
+Pipfile.lock
+.DS_Store

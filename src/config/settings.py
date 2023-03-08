@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # install apps
     'employee',
     'settings',
+    'project_management',
 ]
 
 MIDDLEWARE = [

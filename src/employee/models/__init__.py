@@ -6,3 +6,4 @@ from .employee import SalaryHistory
 from .employee_skills import Skill
 from .employee_skills import EmployeeSkill
 from .attachments import Attachment
+from .leave import Leave, LeaveAttachment

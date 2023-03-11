@@ -24,3 +24,6 @@ class BookmarksAdmin(admin.ModelAdmin):
     fields = super().get_fields(request)
     fields.remove('employee')
     return fields
+  
+  def has_module_permission(self, request):
+    return False

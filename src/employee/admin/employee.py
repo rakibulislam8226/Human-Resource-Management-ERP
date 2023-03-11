@@ -11,6 +11,12 @@ from django.template.loader import get_template
 class EmployeeAdmin(EmployeeInline, admin.ModelAdmin):
     autocomplete_fields = ['user', ]
 
+
+    def get_queryset(self, request):
+        if not request.user.is_superuser:
+            return super(EmployeeAdmin, self).get_queryset(request).filter(user__id=request.user.id)
+        return super(EmployeeAdmin, self).get_queryset(request)
+
     def get_actions(self, request):
         if not request.user.is_superuser:
             return []

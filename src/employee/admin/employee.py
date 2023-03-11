@@ -62,6 +62,9 @@ class SkillAdmin(admin.ModelAdmin):
 class LeaveManagementAdmin(admin.ModelAdmin):
     list_display = ['title', 'casual_leave', 'medical_leave']
 
+    def has_module_permission(self, request):
+        return False
+
 
 @admin.register(EmployeeSkill)
 class EmployeeSkillAdmin(admin.ModelAdmin):
@@ -82,3 +85,6 @@ class PayScaleAdmin(admin.ModelAdmin):
 @admin.register(Designation)
 class DesignationAdmin(admin.ModelAdmin):
     list_display = ['title',]
+
+    def has_module_permission(self, request):
+        return False

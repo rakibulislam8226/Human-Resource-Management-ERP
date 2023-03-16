@@ -1,0 +1,15 @@
+<div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
+  <table width="100%">
+      <caption class="w-100" style="">
+          <a href="{% url 'admin:employee_bookmarks_changelist' %}" class="section"
+             title="">Bookmark</a>
+      </caption>
+          
+      {% for f_menu in object_list %}
+      <tr>
+          <td> <a href="employee/bookmarks/{{f_menu.id}}/change/" target="_blank">{{ f_menu.menu_name }} </a></td>
+      </tr>
+      {% endfor %}
+         
+  </table>
+</div>

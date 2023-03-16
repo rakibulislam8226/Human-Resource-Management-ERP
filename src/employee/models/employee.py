@@ -3,6 +3,11 @@ from django.contrib.auth.models import User, Group
 from django.utils import timezone
 from django.utils.timesince import timesince
 from django.utils.text import slugify
+from django_q.tasks import async_task
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.utils.timezone import datetime #important if using timezones
+
 from config.models.TimeStampMixin import TimeStampMixin
 from config.models.AuthorMixin import AuthorMixin
 
@@ -124,6 +129,13 @@ class Employee(TimeStampMixin, AuthorMixin):
 
     class Meta:
         db_table = 'employees'
+    
+
+@receiver(post_save, sender=Employee)
+def employee_post_save(sender, instance, created, *args, **kwargs):
+    today_date = datetime.today().date()
+    if instance.permanent_date == today_date:
+        async_task('employee.tasks.employee_permanent_mail', instance)
 
 
 class SalaryHistory(TimeStampMixin, AuthorMixin):

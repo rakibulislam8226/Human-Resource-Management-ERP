@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Increment Table</title>
+    <style>
+        * {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<p>Hello there is {{ total_emp }} employee(s) to increment</p>
+<table style="border-collapse: collapse" border="1" cellpadding="5">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Employee Name</th>
+        <th>Last Increment Date</th>
+        <th>Note</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for employee in employees %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ employee.full_name }}</td>
+            <td>{{ employee.current_salary.active_from }}</td>
+            <td>{{ employee.current_salary.note }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

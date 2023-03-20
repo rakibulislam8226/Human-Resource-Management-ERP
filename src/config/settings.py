@@ -44,11 +44,13 @@ INSTALLED_APPS = [
     ##
     'django_userforeignkey',
     'django_q',
+    'tinymce',
 
     # install apps
     'employee',
     'settings',
     'project_management',
+    'asset_management',
 ]
 
 MIDDLEWARE = [

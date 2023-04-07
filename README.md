@@ -77,4 +77,43 @@ python manage.py runserver
 ---
 
 ### Connect redis server
-TODO:
+
+* Install redis and make sure redis server is running.
+* To install redis you can check the docx [https://redis.io/docs/getting-started/installation/]
+
+
+**Restart redis server:**
+ ```shell
+sudo systemctl restart redis.service
+  ```
+  ###### OR
+  ```
+  /etc/init.d/redis-server restart  --restart redis server
+  /etc/init.d/redis-server stop   --stop redis server
+  /etc/init.d/redis-server start    --start redis server
+  ```
+
+
+**Testing Redis:**
+ ```shell
+sudo systemctl status redis
+  ```
+
+More details for redis control visit 
+[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04]
+
+
+
+**Run the qcluster server**
+ ```shell
+python manage.py qcluster
+  ```
+  ###### Then stop the server and run again the localhost of django
+
+  ```shell
+python manage.py runserver
+  ```
+  ---
+
+
+
